@@ -1,11 +1,16 @@
 # Use the node image
 FROM node:alpine
 
+RUN mkdir -p /usr/quickstart
+
+ADD . /usr/quickstart
+
+WORKDIR /usr/quickstart
+
 RUN npm install
-RUN npm install -g @angular/cli
 
-RUN ng new my-app
+EXPOSE 3000 3001
 
-RUN cd my-app
+RUN ls
 
-RUN ng serve --open
+CMD ["npm", "start"]
